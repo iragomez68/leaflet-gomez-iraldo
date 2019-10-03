@@ -1,5 +1,5 @@
 // Store our API endpoint inside queryUrl
-//var queryUrl = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson";
+// var queryUrl = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson";
 var queryUrl = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson"
 // Perform a GET request to the query URL
 d3.json(queryUrl, function(data) {
@@ -24,7 +24,7 @@ legend.onAdd = function (map) {
     to = mags[i];
 
     labels.push(
-      '<i style="background:' + getColor(from + 1) + '"></i> ' +
+      '<i style="background:' + getColor(from) + '"></i> ' +
       from + (to ? '&ndash;' + to : '+'));
   }
 
@@ -37,7 +37,7 @@ legend.onAdd = function (map) {
 function getColor(c)
 {
   // x = Math.round(c);
-  switch (Math.floor(c)) {
+  switch (Math.floor(Math.abs(c))) {
     case 0:
       return 'lightyellow';
     case 1:
